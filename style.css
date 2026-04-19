@@ -1,0 +1,314 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-direction: row;      /* force row — never column */
+  align-items: center;      /* vertically center everything */
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  flex-wrap: nowrap;        /* prevent wrapping to next line */
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;      /* keep logo on one line */
+  flex-shrink: 0;           /* never compress the logo */
+}
+
+.logo span {
+  color: #7F77DD;
+}
+
+.search-bar {
+  flex: 1;                  /* grow to fill available space */
+  min-width: 0;             /* allow shrinking on small screens */
+  max-width: 360px;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  height: 38px;
+}
+
+.search-bar:focus {
+  border-color: #7F77DD;
+}
+
+.site-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;           /* never compress the nav */
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: #1a1a1a;
+}
+
+/* Filter pills */
+.filters {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pill {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: #EEEDFE;
+  border-color: #AFA9EC;
+  color: #3C3489;
+}
+
+/* Section title */
+main {
+  padding: 20px 24px;
+}
+
+main h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Card grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #bbb;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 10px 12px 14px;
+}
+
+.genre-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #993C1D;
+  background: #FAECE7;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.card-body h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 6px 0 4px;
+  line-height: 1.3;
+}
+
+.meta {
+  font-size: 12px;
+  color: #777;
+}
+
+.loading {
+  font-size: 14px;
+  color: #888;
+  padding: 20px 0;
+}
+
+.loading {
+  font-size: 14px;
+  color: #888;
+  padding: 20px 0;
+  grid-column: 1 / -1;   /* spans full grid width */
+}
+
+.card-img-wrapper {
+  position: relative;  /* needed so bookmark button can sit on top of image */
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.bookmark-btn {
+  position: absolute;   /* float over the image */
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+
+.bookmark-btn:hover {
+  transform: scale(1.15);
+}
+
+.bookmark-btn.saved {
+  color: #BA7517;       /* amber star when saved */
+  background: #FAEEDA;
+}
+
+@media (max-width: 600px) {
+
+  /* header stacks on mobile */
+  .site-header {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 100%;
+    order: 3;        /* moves search below logo and nav */
+  }
+
+  nav a {
+    margin-left: 10px;
+    font-size: 13px;
+  }
+
+  /* smaller padding on mobile */
+  main,
+  .filters {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* 2 columns on phones instead of auto-fill */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* pills scroll sideways instead of wrapping */
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  /* hide scrollbar on pill strip (cosmetic) */
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* skeleton card */
+.skeleton {
+  background: var(--color-background, #fff);
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.skeleton-img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #e8e8e8;
+  animation: shimmer 1.2s infinite;
+}
+
+.skeleton-body {
+  padding: 10px 12px 14px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 4px;
+  background: #e8e8e8;
+  margin-bottom: 8px;
+  animation: shimmer 1.2s infinite;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.error-msg {
+  font-size: 14px;
+  color: #888;
+  padding: 20px 0;
+  grid-column: 1 / -1;
+}
+
+.error-msg button {
+  background: none;
+  border: none;
+  color: #7F77DD;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.site-nav a.active {
+  color: #7F77DD;
+  font-weight: 600;
+}

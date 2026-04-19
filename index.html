@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF8" />
+    <meta name= "viewport" content="width-device-width, initial-scale = 1.0"/>
+    <title>AniPick</title>
+    <link rel="stylesheet" href ="style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="logo">Ani<span>Pick</span></div>
+        <input class="search-bar" id="search-input" type="text" placeholder="Search anime..." />
+        <nav class="site-nav">
+            <a href="#" id="nav-home">Home</a>
+            <a href="#" id="nav-watchlist">Watchlist</a>
+            <a href="#" id="nav-top">Top Rated</a>
+        </nav>
+    </header>
+
+    <div class="filters">
+        <button class="pill active" data-genre="All">All</button>
+        <button class="pill" data-genre="Action">Action</button>
+        <button class="pill" data-genre="Adventure">Adventure</button>
+        <button class="pill" data-genre="Adventure">Adventure</button>
+        <button class="pill" data-genre="Comedy">Comedy</button>
+        <button class="pill" data-genre="Drama">Drama</button>
+    </div>
+
+     <main>
+    <h2>Trending this season</h2>
+    <div class="grid" id="anime-grid">
+    </div>
+  </main>
+
+  <div id="watchlist-section" style="display:none;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding: 20px 24px 8px;">
+        <h2>My watchlist</h2>
+        <button id="clear-btn">Clear all</button>
+    </div>
+    <div class="grid" id="watchlist-grid"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
