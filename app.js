@@ -262,9 +262,4 @@ async function showTopRated() {
   }
 }
 
-document.getElementById('nav-top').addEventListener('click', function(e) {
-  e.preventDefault();
-  showTopRated();
-});
-
 fetchAnime();
