@@ -157,6 +157,11 @@ pills.forEach(function(pill) {
   });
 });
 
+// search input
+document.getElementById('search-input').addEventListener('input', function() {
+  applyFilters();
+});
+
 function setActiveNav(id) {
   document.querySelectorAll('.site-nav a').forEach(function(a) {
     a.classList.remove('active');
@@ -182,6 +187,12 @@ document.getElementById('nav-top').addEventListener('click', function(e) {
   e.preventDefault();
   setActiveNav('nav-top');
   showTopRated();
+});
+
+// clear all button
+document.getElementById('clear-btn').addEventListener('click', function() {
+  localStorage.removeItem('watchlist');
+  showWatchlist();
 });
 
 // --- fetch on load ---
